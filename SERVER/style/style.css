@@ -1,0 +1,92 @@
+@font-face
+{
+	font-family: 'Stolzl'; src: url('../fonts/Stolzl.otf');
+}
+body
+{
+	background-color: rgb(241,241,241);
+	padding: 0px;
+	margin: 0px;
+	font-family: 'Stolzl';
+	
+}
+body a
+{
+	text-decoration: none;
+	color: black;
+}
+header
+{
+	height: 36px;
+	background-color: rgb(51,65,75);
+}
+header a
+{
+		color: white;
+}
+header > span
+{
+	color: rgb(241,241,241);
+	vertical-align: middle;
+	font-size: 14px;
+	padding-top: 9px;
+	padding-left: 20px;
+}
+
+main > div:nth-child(1)
+{
+	display : flex;
+	justify-content: center;
+	font-size: 36px;
+	color: black;
+}
+main > div:nth-child(2)
+{
+	margin-top: 1%;
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+}
+main > div > span
+{
+	width: 250px;
+	height: 150px;
+	background-repeat: no-repeat;
+  background-size: cover; /* Масштабируем фон */;
+  border-radius: 10px;
+  border: 1.5px solid black;
+  transition: 0.3s;
+}
+main > div > span:hover
+{
+	width: 300px;
+	height: 180px;
+	transition: 0.3s;
+}
+main > div > span > a
+{
+	width: 85%;
+	height: 20%;
+	margin-top: 2%;
+	font-size: 150%;
+	display: inline-block;
+	background-color: rgb(250,90,90);
+	border-radius: 10px;
+  border: 2px solid black;
+}
+main > div > span > img
+{
+	max-width: 50%;
+}
+main > div > span:nth-child(1)
+{
+	background-image: url("../img/monitor.jpg");
+}
+main > div > span:nth-child(2)
+{
+	background-image: url("../img/plan.png");
+}
+main > div > span:nth-child(3)
+{
+	background-image: url("../img/soft.png");
+}
