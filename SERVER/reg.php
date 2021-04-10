@@ -16,10 +16,10 @@ if(isset($_GET['object']) && isset($_GET['id']))
 		{
 				while(($data = fgetcsv($fp, 0, ";")) !== FALSE)
 				{
-						if($data[0] == $_GET['id'])
+						if($data[0] == $_GET['object'] && $data[1] == $_GET['id'])
 						{
 								$is_new = false;
-								$data[1] = $ip;
+								$data[2] = $ip;
 								echo "ip have changed";
 						}
 						$list[] = $data;
@@ -30,7 +30,7 @@ if(isset($_GET['object']) && isset($_GET['id']))
 		$dir = "storage/".$_GET['object'];
 		if ($is_new)
 		{
-				$list[] = array($_GET['id'], $ip);
+				$list[] = array($_GET['object'], $_GET['id'], $ip);
 				
 				if (!file_exists($dir)){
 					mkdir($dir, 0777);

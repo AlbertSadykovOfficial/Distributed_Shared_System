@@ -14,27 +14,27 @@
 		<span></span>
 	</header>
 	<main>
-		<div style="font-size: 200%; text-align: center; margin-top: 20px;">Pool устройств</div>
+		<div style="font-size: 200%; text-align: center; margin-top: 20px;">Объекты</div>
 			<table>
 				<tbody>
 					<tr>
 						<td> Устройство </td>
-						<td> IP-адрес</td>
-						<td> Ссылка</td>
+						<td> IP-адрес </td>
+						<td> Ссылка </td>
 					</tr>
 <?php
-		if(($fp = fopen("reg_list.csv", "r")) !== FALSE)
+	if(($fp = fopen("reg_list.csv", "r")) !== FALSE)
+	{
+		while(($data = fgetcsv($fp, 0, ";")) !== FALSE)
 		{
-			while(($data = fgetcsv($fp, 0, ";")) !== FALSE)
-			{
-				echo "<tr>";
-				echo "<td> ".$data[0]." </td>";
-				echo "<td> ".$data[1]." </td>";
-				echo "<td><a href='http://".$data[1]."/update'>Update</a> </td>";
-				echo "</tr>";
-			}
+			echo "<tr>";
+			echo "<td> ".$data[0].$data[1]." </td>";
+			echo "<td> ".$data[2]." </td>";
+			echo "<td><a href='http://".$data[2]."/update'>Update</a> </td>";
+			echo "</tr>";
 		}
-		fclose($fp);
+	}
+	fclose($fp);
 ?>
 				</tbody>
 			</table>

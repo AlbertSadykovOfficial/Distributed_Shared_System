@@ -15,18 +15,18 @@
 
 	<main>
 <?php
-		if (isset($_GET['device']) && isset($_GET['action']))
+		if (isset($_GET['object']) && isset($_GET['device']) && isset($_GET['action']))
 		{
 				if(($fp = fopen("reg_list.csv", "r")) !== FALSE)
-				{ 
+				{
 						while(($data = fgetcsv($fp, 0, ";")) !== FALSE)
 						{
-								if($data[0] == $_GET['device'])
+								if($data[0] == $_GET['object'] && $data[1] == $_GET['device'])
 								{
 										fclose($fp);
-										$ip = $data[1];
+										$ip = $data[2];
 										if($_GET['action'] == "on")
-										{	
+										{
 											file_get_contents("http://".$ip."/gpio_ON");
 											echo "Включено";
 										}
@@ -38,7 +38,7 @@
 										break;
 								}
 						}
-				}	
+				}
 		}
 ?>
 	</main>

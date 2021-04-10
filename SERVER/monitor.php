@@ -5,9 +5,9 @@
 	<title>Показания</title>
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 	<link rel="stylesheet" type="text/css" href="style/table.css">
-	
+
 	<script>
-		let objects = []; 
+		let objects = [];
 	</script>
 </head>
 <body>
@@ -18,7 +18,7 @@
 		<span></span>
 	</header>
 	<main>
-		<div style="font-size: 200%; text-align: center; margin-top: 20px;">Pool устройств</div>
+		<div style="font-size: 200%; text-align: center; margin-top: 20px;">Объекты</div>
 			<table style='width: 20%;'>
 				<tbody>
 <?php
@@ -27,7 +27,7 @@
 
 									$data_dir = "storage";
 									$dir = opendir($data_dir);
-									
+
 									while ($folder = readdir($dir))
 									{
 											if ($folder !== '.' && $folder !== '..')
@@ -38,19 +38,23 @@
 													while ($file = readdir($tmp_dir))
 													{
 															if ($file !== '.' && $file !== '..')
-															{	
+															{
 																if (strpos($file, '.csv')) 
 																{
 																	$img = "img/graph.jpg";
-																	$href = " <a href='graph.php?object=$folder&sensor=$file'>$file</a>";
-																	
+																	//$href = " <a href='graph.php?object=$folder&sensor=$file'>$file</a>";
+																	$href = " <a href='graph.php?".
+																										"object=$folder".
+																										"&sensor=$file'>".
+																										$file.
+																						"</a>";
 																}else{
 																	$img = "img/control.png";
-																	$href = "control.php?device=$file&action";
+																	$href = "control.php?object=$folder&device=$file&action";
 																	$href = " $file ( <a href='$href=on'>On</a>".
 																			" / <a href='$href=off'>Off</a>)";
 																}
-																
+
 																$file_list = $file_list.
 																"<tr><td>".
 																		"<img src='$img'> ". $href.
@@ -58,9 +62,9 @@
 															}
 													}
 													closedir($tmp_dir);
-											
+
 													$file_list = $file_list."</tr>";
-													echo 
+													echo
 														"<script>".
 															"objects.push(\"".$file_list."\");".
 														"</script>";
@@ -82,16 +86,22 @@
 		</main>
 	</body>
 <script>
-	document.getElementsByTagName('tbody')[0].innerHTML = "<tr><td>storage</td></tr>" + objects[objects.length-1];
-	
+	let tbody = document.getElementsByTagName('tbody')[0];
+	tbody.innerHTML = "<tr><td>storage</td></tr>" + objects[objects.length-1];
+
 	function open_folder(i, dir)
 	{
-		document.getElementsByTagName('tbody')[0].querySelector('tr').remove();
-		document.getElementsByTagName('tbody')[0].innerHTML = "<tr><td>"+dir+"</td></tr>" + objects[i];
-		
+		tbody.querySelector('tr').remove();
+		tbody.innerHTML = "<tr><td>"+dir+"</td></tr>" + objects[i];
+
 		if (dir !== 'storage')
 		{
-			document.getElementsByTagName('tbody')[0].insertAdjacentHTML('beforeEnd',"<tr><td onclick=open_folder(objects.length-1,\"storage\")>BACK</td></tr>");
+			html = "<tr>"+
+									"<td onclick=open_folder(objects.length-1,\"storage\")>"+
+										"BACK"+
+									"</td>"+
+							"</tr>";
+			tbody.insertAdjacentHTML('beforeEnd', html);
 		}
 	}
 </script>
