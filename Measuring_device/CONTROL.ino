@@ -19,14 +19,15 @@ HTTPClient httpClient;
 
 void connect_LED(String value)
 {
-    if (value == "ON") { digitalWrite(2, 0); } 
-    if (value == "OFF"){ digitalWrite(2, 1); }
+    if (value == "ON") { digitalWrite(4, 1); } 
+    if (value == "OFF"){ digitalWrite(4, 0); }
 }
 
 void setup(void) 
 {
     WiFi.mode(WIFI_AP_STA);
-  
+    WiFi.begin(ssid, password);
+    
     connect_to_WIFI();
     
     httpUpdater.setup(&httpServer);
@@ -34,7 +35,7 @@ void setup(void)
     httpServer.on("/gpio_ON", handleLedOn);
     httpServer.on("/gpio_OFF", handleLedOff);
     
-    pinMode(2,OUTPUT);
+    pinMode(4,OUTPUT);
     pinMode(12,OUTPUT);
     pinMode(13,OUTPUT);
     pinMode(14,OUTPUT);
