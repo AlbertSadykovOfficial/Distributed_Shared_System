@@ -78,7 +78,6 @@
 									}
 									closedir($dir);
 
-									//$content = $content;
 									echo "<script>objects.push(\"".$content."\");</script>";
 ?>
 				</tbody>
