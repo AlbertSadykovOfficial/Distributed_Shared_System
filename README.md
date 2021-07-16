@@ -18,12 +18,12 @@
 ![alt text](https://github.com/AlbertSadykovOfficial/Distributed_Shared_System/blob/main/SCREENSHOTS/prototype/Front.jpg) 
 
 
-## Функциональная схема спроекированной системы:
+## Функциональная схема спроектированной системы:
 
 ![alt text](https://github.com/AlbertSadykovOfficial/Distributed_Shared_System/blob/main/SCREENSHOTS/prototype/functional.png)
 
 
-## Сегменированность системы
+## Сегментированность системы
 Разработанная система позволяет исключать операторские пункты на объектах, передавая данные на центральную SCADA-систему. Другим вариантом может быть передавача данных как на объекты, так и на SCADA-систему.
 
 ![alt text](https://github.com/AlbertSadykovOfficial/Distributed_Shared_System/blob/main/SCREENSHOTS/prototype/segmentation.jpg)
